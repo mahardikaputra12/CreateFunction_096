@@ -8,8 +8,17 @@ def convert_temperature(value, unit):
     elif unit == 'F':
         return (value - 32) * 5 / 9
     else:
-        return "Unit tidak valid! Gunakan 'C' atau 'F'."
+        return None
 
-print(convert_temperature(100, 'C'))  
-print(convert_temperature(212, 'F'))  
-print(convert_temperature(50, 'D'))  #output : unit tidak valid
+
+suhu = float(input("Masukkan nilai suhu: "))
+satuan = input("Masukkan satuan (C/F): ")
+
+hasil = convert_temperature(suhu, satuan)
+
+if hasil is None:
+    print("Satuan tidak valid! Gunakan 'C' atau 'F'.")
+elif satuan.upper() == 'C':
+    print(f"{suhu} °C = {hasil:.2f} °F")
+else:
+    print(f"{suhu} °F = {hasil:.2f} °C")
